@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/do';  // for debugging
-import 'rxjs/add/operator/toPromise';
 import { Config } from '../shared/config/env.config';
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AusPostService {
 
   constructor(private http: Http) {}
-
-  // createAuthorizationHeader( headers: Headers ) {
-  //   headers.append('AUTH-KEY', Config.ausPostKey);
-  // }
 
   getSuburbs( suburbSearch: string ) {
     let headers = new Headers();

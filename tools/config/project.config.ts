@@ -14,6 +14,7 @@ export class ProjectConfig extends SeedConfig {
   constructor() {
     super();
     this.ENABLE_SCSS = true;
+    this.APP_TITLE = 'Australia Post API Integration with Angular 2 - Mark Franco';
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;

@@ -11,21 +11,20 @@ import { AusPostService } from '../shared/aus-post.service';
 })
 export class HomeComponent  {
 
-  onlineForm: any = {};
+  name: string;
+  email: string;
   suburbSearch: string = '';
   suburbs: any[];
   errorMessage: string;
   submitted: boolean = false;
   emailPattern: RegExp = /^[a-z0-9_\-\.]{2,}@[a-z0-9_\-\.]{2,}\.[a-z]{2,}$/;
 
-  constructor( public ausPostService: AusPostService) {
-    console.log('Hello');
-  }
+  constructor( public ausPostService: AusPostService) { }
 
   lookForSuburb() {
     this.suburbs = null;
 
-    if ( this.suburbSearch.length >= 3 ) {
+    if ( this.suburbSearch && this.suburbSearch.length >= 3 ) {
       this.ausPostService.getSuburbs(this.suburbSearch)
                         .subscribe(
                           suburbs => this.suburbs = suburbs,
@@ -45,7 +44,6 @@ export class HomeComponent  {
 
   onSubmit() {
     this.submitted = true;
-    console.log('Send to server', this.onlineForm);
   }
 
 

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NameListService } from '../shared/name-list/name-list.service';
-
 import { AusPostService } from '../shared/aus-post.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Config } from '../shared/config/env.config';
 
@@ -11,9 +11,7 @@ export class AusPostService {
   constructor(private http: Http) {}
 
   getSuburbs( suburbSearch: string ) {
-    let headers = new Headers();
     return this.http.get( Config.api + '/api/ausPostSuburbSearch/' + suburbSearch )
-                    // .toPromise()
                     .map(( response: any ) => {
                       return response.json().localities.locality || [];
                     })

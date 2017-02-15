@@ -12,5 +12,10 @@ app.use(function(req, res, next) {
 
 var port = Number(process.env.PORT || 3000);
 
+var server = app.listen(process.env.PORT || 8080, function() {
+  var port = server.address().port;
+  console.log('App now running on port', port);
+});
+
 var distDir = __dirname + "/dist/prod";
 app.use(express.static(distDir));

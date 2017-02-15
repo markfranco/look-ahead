@@ -1,6 +1,6 @@
 :host {
   display: block;
-  padding: 0 16px;
+  padding: 20px;
 }
 
 input {
@@ -12,11 +12,33 @@ ul {
   padding: 0 0 0 8px;
 }
 
-[hidden] { display: none !important;}
+[hidden] {
+  display: none !important;
+}
+
+.clearButton {
+  background: none;
+  color: #666;
+  display: inline-block;
+  &:hover {
+    color: #dc1828;
+  }
+}
+
+input.suburbInput {
+  display: inline-block;
+}
 
 li.suburb {
   &:hover {
-    background-color: red;
+    font-weight: 500;
     cursor: pointer;
   }
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
 }

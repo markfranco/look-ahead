@@ -19,8 +19,7 @@ export class AusPostService {
     return this.http.get( Config.api + '/api/ausPostSuburbSearch/' + suburbSearch )
                     // .toPromise()
                     .map(( response: any ) => {
-                      console.log('>>>', response.json().localities.locality);
-                      return response.json().localities.locality;
+                      return response.json().localities.locality || [];
                     })
                     .catch(this.handleError);
   }

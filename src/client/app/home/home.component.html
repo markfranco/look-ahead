@@ -1,18 +1,40 @@
-<p>Look for suburb here (must type at least 3 characters)</p>
+<form (ngSubmit)="onSubmit()" #onlineForm="ngForm" novalidate="novalidate">
 
-<!--<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
-  <button type="submit">Add</button>
-</form>-->
+  <div class="form-group">
+    <input type="text" [(ngModel)]="name" name="name" class="form-control" id="name" placeholder="Name" required>
+  </div>
 
-<!--on ng change make the api call-->
-<form (submit)="addName()">
-  <input [(ngModel)]="suburbSearch" name="suburb" (keyup)="lookForSuburb()" placeholder="Enter suburb/postcode">
-  <button type="button"(click)="clearSuburb()" [hidden]="!suburbSearch">Clear</button>
-  <ul>
-    <li class="suburb" *ngFor="let suburb of suburbs" (click)="populateSuburb(suburb)">
-      {{ suburb.location }}, {{ suburb.postcode }}
-    </li>
-  </ul>
+  <div class="form-group">
+    <input type="email" [(ngModel)]="email" name="email" class="form-control" placeholder="Email" id="email" [pattern]="emailPattern" required>
+  </div>
+
+  <div class="form-group">
+    <input [(ngModel)]="suburbSearch" name="suburb" class="form-control suburbInput" (keyup)="lookForSuburb()" placeholder="Enter suburb/postcode" required>
+    <button class="clearButton" type="button"(click)="clearSuburb()" [hidden]="!suburbSearch">Clear</button>
+    <ul>
+      <li class="suburb" *ngFor="let suburb of suburbs" (click)="populateSuburb(suburb)">
+        {{ suburb.location }}, {{ suburb.postcode }}
+      </li>
+    </ul>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="!onlineForm.form.valid">Submit</button>
 </form>
 
+<div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-9  pull-left">{{ onlineForm?.name }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Alter Ego</div>
+    <div class="col-xs-9 pull-left">{{ onlineForm?.alterEgo }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Power</div>
+    <div class="col-xs-9 pull-left">{{ onlineForm?.power }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>

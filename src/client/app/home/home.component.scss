@@ -11,3 +11,12 @@ ul {
   list-style-type: none;
   padding: 0 0 0 8px;
 }
+
+[hidden] { display: none !important;}
+
+li.suburb {
+  &:hover {
+    background-color: red;
+    cursor: pointer;
+  }
+}

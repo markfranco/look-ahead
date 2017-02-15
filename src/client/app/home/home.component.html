@@ -1,10 +1,18 @@
-<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
+<p>Look for suburb here (must type at least 3 characters)</p>
 
-<form (submit)="addName()">
+<!--<form (submit)="addName()">
   <input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
   <button type="submit">Add</button>
+</form>-->
+
+<!--on ng change make the api call-->
+<form (submit)="addName()">
+  <input [(ngModel)]="suburbSearch" name="suburb" (keyup)="lookForSuburb()" placeholder="Enter suburb/postcode">
+  <button type="button"(click)="clearSuburb()" [hidden]="!suburbSearch">Clear</button>
+  <ul>
+    <li class="suburb" *ngFor="let suburb of suburbs" (click)="populateSuburb(suburb)">
+      {{ suburb.location }}, {{ suburb.postcode }}
+    </li>
+  </ul>
 </form>
 
-<ul>
-  <li *ngFor="let name of names">{{name}}</li>
-</ul>
